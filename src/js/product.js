@@ -1,8 +1,14 @@
 import { setLocalStorage } from "./utils.mjs";
 import { findProductById } from "./productData.mjs";
 
+// function addProductToCart(product) {
+//   setLocalStorage("so-cart", product);
+// }
+// Original above ^^, trying to make it so that it creates new entries below vv
 function addProductToCart(product) {
-  setLocalStorage("so-cart", product);
+  var i = localStorage.length;
+  var keyname = "so-cart-" + [i];
+  setLocalStorage(keyname, product);
 }
 // add to cart button event handler
 async function addToCartHandler(e) {
