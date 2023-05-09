@@ -216,6 +216,10 @@ button {
   }
 }
 
+/* .hide {
+  display: none;
+} */
+
 footer {
   font-size: var(--small-font);
   padding: 1em;

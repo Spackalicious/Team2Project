@@ -25,4 +25,32 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function cartTotal() {
+
+  const cartItemsTotal = document.querySelector(".cart-total");
+  const itemsInCart = getLocalStorage("so-cart");
+
+  let cartTotalCost = 0; 
+  function addPrices(price) {       
+    cartTotalCost += price;
+  }
+
+  if (itemsInCart.length == 0) {
+    // cartItemsTotal.append("Nothing in Cart");    
+    // document.querySelector(".cart-total");    
+
+
+
+  }
+  else {
+    // const show = `inline;`
+    
+    const itemPrices = itemsInCart.map((item) => item.FinalPrice);    
+    itemPrices.forEach(addPrices);    
+    cartItemsTotal.append(`$${cartTotalCost}`);
+  }
+  
+}
+
 renderCartContents();
+cartTotal();
