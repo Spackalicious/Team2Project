@@ -27,4 +27,26 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function cartTotal() {
+
+  const cartItemsTotal = document.querySelector(".cart-total");
+  const itemsInCart = getLocalStorage("so-cart");
+
+  let cartTotalCost = 0; 
+  function addPrices(price) {       
+    cartTotalCost += price;
+  }
+
+  if(itemsInCart != null){    
+    const itemPrices = itemsInCart.map((item) => item.FinalPrice);    
+    itemPrices.forEach(addPrices);    
+    cartItemsTotal.append(`$${cartTotalCost}`);
+    cartItemsTotal.style.display = "inline";
+  }
+  else {
+    cartItemsTotal.style.display = "none";  
+  }
+}
+
 renderCartContents();
+cartTotal();
