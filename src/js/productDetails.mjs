@@ -10,10 +10,10 @@ export default async function productDetails(productId){
         prodName.innerText = "Sorry, no product was not found.";
         prodName.style.color = "#840808";
         document.querySelector("#addToCart").style.display = "none";
+    } else{
+        renderProductDetails();
+        document.getElementById("addToCart").addEventListener("click", () => addToCart(product));
     }
-    renderProductDetails();
-
-    document.getElementById("addToCart").addEventListener("click", () => addToCart(product));
 }
 
 export function addToCart(product) {
