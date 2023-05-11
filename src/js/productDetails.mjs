@@ -5,6 +5,7 @@ let product = {};
 
 export default async function productDetails(productId){
     product = await findProductById(productId);
+  
     if(product == null){
         const prodName = document.querySelector("#productName");
         prodName.innerText = "Sorry, no product was not found.";
@@ -14,6 +15,8 @@ export default async function productDetails(productId){
         renderProductDetails();
         document.getElementById("addToCart").addEventListener("click", () => addToCart(product));
     }
+
+
 }
 
 export function addToCart(product) {
