@@ -13,13 +13,13 @@ export default async function productDetails(productId){
         document.querySelector("#addToCart").style.display = "none";
     } else{
         renderProductDetails();
-        document.getElementById("addToCart").addEventListener("click", () => addToCart(product));
+        document.getElementById("addToCart").addEventListener("click", () => addToCart());
     }
 
 
 }
 
-export function addToCart(product) {
+export function addToCart() {
     let cart = getLocalStorage("so-cart") || [];
     cart.push(product);
     setLocalStorage("so-cart", cart);
