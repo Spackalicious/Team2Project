@@ -1,5 +1,5 @@
 import {findProductById} from "./productData.mjs";
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 let product = {};
 
@@ -36,3 +36,4 @@ function renderProductDetails(){
     document.querySelector("#addToCart").dataset.id = product.Id;
 }
 
+loadHeaderFooter();
