@@ -29,8 +29,3 @@ export default async function productList(selector, category) {
     renderList(productCardTemplate, element, products)
 }
 
-// function topProducts(){
-//     let numList = [0,1,3,5]
-// }
-// productList(".product-list", "tents");
-// function renderList(productList) {}
