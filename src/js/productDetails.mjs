@@ -10,7 +10,6 @@ export default async function productDetails(productId){
         const prodName = document.querySelector("#productName");
         prodName.innerText = "Sorry, no product was not found.";
         prodName.style.color = "#840808";
-        prodName.style.textAlign = "center";
         document.querySelector("#addToCart").style.display = "none";
     } else{
         renderProductDetails();

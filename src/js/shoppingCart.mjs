@@ -3,9 +3,8 @@ import { getLocalStorage, renderList } from "./utils.mjs";
 export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
   const outputEl = document.querySelector(".product-list");
-  if(cartItems != null){
-    renderList(cartItemTemplate, outputEl, cartItems);
-  }
+  renderList(cartItemTemplate, outputEl, cartItems);
+  
 }
 
 function cartItemTemplate(item) {
