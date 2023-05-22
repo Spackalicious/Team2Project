@@ -216,6 +216,11 @@ button {
   }
 }
 
+.cart-total {
+  display: none;
+  /* border: solid red; */
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
