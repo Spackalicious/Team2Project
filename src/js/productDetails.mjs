@@ -10,6 +10,7 @@ export default async function productDetails(productId){
         const prodName = document.querySelector("#productName");
         prodName.innerText = "Sorry, no product was not found.";
         prodName.style.color = "#840808";
+        prodName.style.textAlign = "center";
         document.querySelector("#addToCart").style.display = "none";
     } else{
         renderProductDetails();
@@ -20,10 +21,10 @@ export default async function productDetails(productId){
 }
 
 export function addToCart() {
-    let cart = getLocalStorage("so-cart") || [];
-    cart.push(product);
-    setLocalStorage("so-cart", cart);
-  }
+        let cart = getLocalStorage("so-cart") || [];
+        cart.push(product);
+        setLocalStorage("so-cart", cart);
+}
 
 function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;
