@@ -30,17 +30,18 @@ export function cartTotal() {
     const itemsInCart = getLocalStorage("so-cart");
   
     let cartTotalCost = 0;
+    let roundedCartTotalCost;
+
     function addPrices(price) {
       cartTotalCost += price;
+      roundedCartTotalCost = cartTotalCost.toFixed(2);
     }
   
     if (itemsInCart != null) {
       const itemPrices = itemsInCart.map((item) => item.FinalPrice);
       itemPrices.forEach(addPrices);
-      cartItemsTotal.append(`$${cartTotalCost}`);
+      cartItemsTotal.append(` $${roundedCartTotalCost}`);
       cartItemsTotal.style.display = "inline";
-    } else {
-      cartItemsTotal.style.display = "none";
     }
   }
 
