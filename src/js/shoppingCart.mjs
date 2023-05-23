@@ -4,12 +4,15 @@ export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
   const outputEl = document.querySelector(".product-list");
   if(cartItems != null){
-    renderList(cartItemTemplate, outputEl, cartItems);
+    renderList(cartItemTemplate, outputEl, cartItems); 
+    document.querySelector(".cart-remove-button").addEventListener("click", removeFromCart);   
   }
+  
 }
 
 function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
+  const newItem = `<li class="cart-card divider"
+  >
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -22,6 +25,8 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+
+  <button class="cart-remove-button"><p class="buttonInner" data-id="${item.Id}">X</p></button>
 </li>`;
 
   return newItem;
@@ -43,8 +48,19 @@ export function cartTotal() {
       const itemPrices = itemsInCart.map((item) => item.FinalPrice);
       itemPrices.forEach(addPrices);
       cartItemsTotal.append(` $${roundedCartTotalCost}`);
-      cartItemsTotal.style.display = "inline";
+      // cartItemsTotal.style.display = "inline";
+      cartItemsTotal.style.display = "flex";
+      cartItemsTotal.style.flex = "1";
     }
   }
+
+function removeFromCart() {
+  // const buttonNum = document.querySelector("buttonInner");
+  const buttonNum = this.querySelector("buttonInner");
+  // const dataId = buttonNum.attr("data-id");
+  // const dataId = buttonNum.getAttribute("data-id");
+  const dataId = buttonNum.dataset.id;
+  console.log(dataId);
+}
 
   

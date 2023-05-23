@@ -218,7 +218,14 @@ button {
 
 .cart-total {
   display: none;
+  max-width: 650px;
+  justify-content: flex-end;
   /* border: solid red; */
+}
+
+.cart-remove-button {
+  grid-column: 3;
+  margin: 0 0 5px 0;
 }
 
 footer {
