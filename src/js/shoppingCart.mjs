@@ -56,7 +56,7 @@ export function cartTotal() {
 
 function removeFromCart() {
   // const buttonNum = document.querySelector("buttonInner");
-  const buttonNum = this.querySelector("buttonInner");
+  const buttonNum = this.querySelector(".buttonInner");
   // const dataId = buttonNum.attr("data-id");
   // const dataId = buttonNum.getAttribute("data-id");
   const dataId = buttonNum.dataset.id;
