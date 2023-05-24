@@ -24,6 +24,12 @@ export function addToCart() {
         let cart = getLocalStorage("so-cart") || [];
         cart.push(product);
         setLocalStorage("so-cart", cart);
+        // Add total count
+        let cartCount = getLocalStorage("cart-count") || 0;
+        cartCount++;
+        setLocalStorage("cart-count", cartCount);
+        document.querySelector('#cart-count').textContent = cartCount;
+        document.querySelector('#cart-count-container').className = 'count-container-format'
 }
 
 function renderProductDetails(){
