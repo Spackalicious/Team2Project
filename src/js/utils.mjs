@@ -86,13 +86,13 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);
   // update cart count
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     const cartCountEl = document.querySelector("#cart-count");
     // clear contents
     cartCountEl.textContent = "";
-    cartCountEl.textContent = getLocalStorage('cart-count') || "";
-    if(getLocalStorage('cart-count')){
-      const cartCountContainer = document.querySelector('#cart-count-container');
+    cartCountEl.textContent = getLocalStorage("cart-count") || "";
+    if(getLocalStorage("cart-count")){
+      const cartCountContainer = document.querySelector("#cart-count-container");
       cartCountContainer.className = "count-container-format";
     }
   })
