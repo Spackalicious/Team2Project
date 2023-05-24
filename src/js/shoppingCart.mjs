@@ -4,13 +4,15 @@ export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
   const outputEl = document.querySelector(".product-list");
   if(cartItems != null){
-    renderList(cartItemTemplate, outputEl, cartItems); 
-    // document.querySelector(".cart-remove-button").addEventListener("click", removeFromCart);   
-    // document.querySelector(".buttonInner").addEventListener("click", removeFromCart);  
-    cartItems.forEach(removeButton);  
-       
-  }
-  
+    renderList(cartItemTemplate, outputEl, cartItems);  
+
+    const removeButtons = document.querySelectorAll(".cart-remove-button");
+    removeButtons.forEach(button => {
+      button.addEventListener("click", event => {
+        alert("Button clicked: " + event.target.dataset.id);
+      })
+    })       
+  }  
 }
 
 function cartItemTemplate(item) {
@@ -29,7 +31,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 
-  <button class="cart-remove-button"><p class="buttonInner" data-id="${item.Id}">X</p></button>
+  <button class="cart-remove-button" data-id="${item.Id}">X</button>
 </li>`;
 
   return newItem;
@@ -55,20 +57,4 @@ export function cartTotal() {
       cartItemsTotal.style.display = "flex";
       cartItemsTotal.style.flex = "1";
     }
-  }
-
-function removeButton() {
-  // document.querySelector(".buttonInner").addEventListener("click", removeFromCart);
-  document.querySelector(".cart-remove-button").addEventListener("click", removeFromCart);
-}
-
-function removeFromCart() {
-  const buttonNum = document.querySelector(".buttonInner");
-  // const buttonNum = this.querySelector(".buttonInner");
-  // const dataId = buttonNum.attr("data-id");
-  const dataId = buttonNum.getAttribute("data-id");
-  // const dataId = buttonNum.dataset.id;
-  alert(dataId);
-}
-
-  
+  }  
