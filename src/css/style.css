@@ -226,6 +226,8 @@ button {
 .cart-remove-button {
   grid-column: 3;
   margin: 0 0 5px 0;
+  height: 50px;
+  /* border: solid teal; */
 }
 
 footer {

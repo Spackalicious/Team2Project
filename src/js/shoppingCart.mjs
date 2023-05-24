@@ -5,7 +5,10 @@ export default function ShoppingCart() {
   const outputEl = document.querySelector(".product-list");
   if(cartItems != null){
     renderList(cartItemTemplate, outputEl, cartItems); 
-    document.querySelector(".cart-remove-button").addEventListener("click", removeFromCart);   
+    // document.querySelector(".cart-remove-button").addEventListener("click", removeFromCart);   
+    // document.querySelector(".buttonInner").addEventListener("click", removeFromCart);  
+    cartItems.forEach(removeButton);  
+       
   }
   
 }
@@ -54,13 +57,18 @@ export function cartTotal() {
     }
   }
 
+function removeButton() {
+  // document.querySelector(".buttonInner").addEventListener("click", removeFromCart);
+  document.querySelector(".cart-remove-button").addEventListener("click", removeFromCart);
+}
+
 function removeFromCart() {
-  // const buttonNum = document.querySelector("buttonInner");
-  const buttonNum = this.querySelector(".buttonInner");
+  const buttonNum = document.querySelector(".buttonInner");
+  // const buttonNum = this.querySelector(".buttonInner");
   // const dataId = buttonNum.attr("data-id");
-  // const dataId = buttonNum.getAttribute("data-id");
-  const dataId = buttonNum.dataset.id;
-  console.log(dataId);
+  const dataId = buttonNum.getAttribute("data-id");
+  // const dataId = buttonNum.dataset.id;
+  alert(dataId);
 }
 
   
