@@ -129,6 +129,31 @@ button {
   max-width: 600px;
   margin: auto;
 }
+
+#icons ul li img {
+  width: 70%;
+  min-width: 80px;
+}
+
+#icons ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+#icons ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  max-width: 80%;
+  margin: 10px auto;
+  flex-shrink: 0;
+}
+
+#icons ul li {
+  list-style: none;
+  text-align: center;
+}
+
 .products {
   padding: 0.5em;
 }
