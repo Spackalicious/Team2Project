@@ -4,9 +4,9 @@ import {renderList} from "./utils.mjs";
 // productList.mjs
 function productCardTemplate(product) {
     return `<li class="product-card">
-    <a href="product_pages/index.html?product=${product.Id}">
+    <a href="/product_pages/index.html?product=${product.Id}">
     <img
-      src="${product.Image}"
+      src="${product.Images.PrimaryMedium}"
       alt="Image of ${product.Name}"
     />
     <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -21,8 +21,9 @@ export default async function productList(selector, category) {
     const element = document.querySelector(selector);
     // get the list of products 
     const products = await getData(category);
-    console.log(products);
     // render out the product list to the element
+    const title = document.querySelector(".title");
+    title.textContent = category[0].toUpperCase() + category.substring(1);
     //element.innerHTML = products.name;
     //const htmlItems = products.map((item) => productCardTemplate(item));
     //element.innerHTML = htmlItems.join("");

@@ -28,14 +28,14 @@ export function addToCart() {
         let cartCount = getLocalStorage("cart-count") || 0;
         cartCount++;
         setLocalStorage("cart-count", cartCount);
-        document.querySelector('#cart-count').textContent = cartCount;
-        document.querySelector('#cart-count-container').className = 'count-container-format'
+        document.querySelector("#cart-count").textContent = cartCount;
+        document.querySelector("#cart-count-container").className = "count-container-format"
 }
 
 function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Image;
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
     document.querySelector("#productImage").alt = product.Name;
     document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
