@@ -1,4 +1,4 @@
-import { getLocalStorage, renderList } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, renderList } from "./utils.mjs";
 
 export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
@@ -9,7 +9,16 @@ export default function ShoppingCart() {
     const removeButtons = document.querySelectorAll(".cart-remove-button");
     removeButtons.forEach(button => {
       button.addEventListener("click", event => {
-        alert("Button clicked: " + event.target.dataset.id);
+        let itemToRemove = cartItems.find(cartItem => cartItem.Id == event.target.dataset.id);
+        let itemIndex = cartItems.indexOf(itemToRemove);
+        cartItems.splice(itemIndex, 1);
+        
+        if(cartItems.length != 0) {
+          setLocalStorage("so-cart", cartItems);
+        } else {
+          localStorage.removeItem("so-cart");
+        }          
+        window.location.reload();
       })
     })       
   }  
