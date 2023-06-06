@@ -1,3 +1,5 @@
+import { getProductsByCategory, findProductById } from "./externalServices.mjs";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -73,6 +75,33 @@ function loadTemplate(path) {
     return html;
     }
   };
+}
+
+export function breadcrumbs() {
+  const category = window.location.search;
+  const categoryTrimmed = category.slice(10);
+  const categoryCapped = categoryTrimmed[0].toUpperCase() + categoryTrimmed.substring(1);
+  // const categoryCount = [];
+  // const categoryCount = renderList().length;
+  // categoryCount.Add();
+  // categoryCount.forEach((getProductsByCategory(categoryTrimmed)) => categoryCount.Add);
+  // forEach(item in getProductsByCategory => categoryCount.Add(item));
+    
+  const breadcrumbText = categoryCapped + " >> (" + getProductsByCategory.length + " items)";
+  document.querySelector(".breadcrumbs").innerHTML = breadcrumbText;
+
+  // const itemCategory = window.location.search;
+  // const itemCategory = "breadcrumbs more";
+  // document.querySelector(".breadcrumb-individual").innerHTML = "itemCategory";
+}
+
+export async function moreBreadcrumbs() {
+  const category = window.location.search;
+  const categoryTrimmed = category.slice(9);
+  const thing = await findProductById(categoryTrimmed);
+  const breadText = thing.Category;
+  const categoryCapped = breadText[0].toUpperCase() + breadText.substring(1);
+  document.querySelector(".breadcrumb-individual").innerHTML = `<a class="breadLink" href="/product-list/index.html?category=${breadText}">${categoryCapped}</a>`;
 }
 
 export async function loadHeaderFooter() {
