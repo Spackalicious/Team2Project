@@ -1,4 +1,6 @@
-import { getProductsByCategory, findProductById } from "./externalServices.mjs";
+// import { getProductsByCategory, findProductById } from "./externalServices.mjs";
+import { findProductById } from "./externalServices.mjs";
+// import productList from "./productList.mjs";
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
@@ -78,24 +80,29 @@ function loadTemplate(path) {
 }
 
 export function breadcrumbs() {
+  // Breadcrumbs to product list pages
+  // hard coded each product count :/ 
   const category = window.location.search;
   const categoryTrimmed = category.slice(10);
   const categoryCapped = categoryTrimmed[0].toUpperCase() + categoryTrimmed.substring(1);
-  // const categoryCount = [];
-  // const categoryCount = renderList().length;
-  // categoryCount.Add();
-  // categoryCount.forEach((getProductsByCategory(categoryTrimmed)) => categoryCount.Add);
-  // forEach(item in getProductsByCategory => categoryCount.Add(item));
+  let itemCount = 0;
+  if (categoryCapped == "Tents") {
+    itemCount = 24;
+  } else if (categoryCapped == "Sleeping-bags") {
+    itemCount = 15;
+  } else if (categoryCapped == "Backpacks") {
+    itemCount = 15;
+  } else if (categoryCapped == "Hammocks") {
+    itemCount = 13;
+  }
     
-  const breadcrumbText = categoryCapped + " >> (" + getProductsByCategory.length + " items)";
+  const breadcrumbText = categoryCapped + " >> (" + itemCount + " items)";
   document.querySelector(".breadcrumbs").innerHTML = breadcrumbText;
-
-  // const itemCategory = window.location.search;
-  // const itemCategory = "breadcrumbs more";
-  // document.querySelector(".breadcrumb-individual").innerHTML = "itemCategory";
 }
 
 export async function moreBreadcrumbs() {
+  // Shows product category with link back to 
+  //  product category list on each product page
   const category = window.location.search;
   const categoryTrimmed = category.slice(9);
   const thing = await findProductById(categoryTrimmed);
