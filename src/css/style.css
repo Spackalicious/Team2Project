@@ -194,6 +194,28 @@ button {
 .card__name {
   font-size: 1em;
 }
+
+#top-products-container {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+#top-products-container div#sorters {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.sortLinks{
+  margin-left: 40px;
+  text-decoration: none;
+  color: #303030;
+}
+
+.sortLinks:hover{
+  color: orange;
+}
+
 /* End product list card */
 
 /* checkout styles */
