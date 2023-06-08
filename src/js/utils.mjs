@@ -143,8 +143,8 @@ export async function loadHeaderFooter() {
     const cartCountEl = document.querySelector("#cart-count");
     // clear contents
     cartCountEl.textContent = "";
-    cartCountEl.textContent = getLocalStorage("cart-count") || "";
-    if(getLocalStorage("cart-count")){
+    cartCountEl.textContent = getLocalStorage("so-cart").length || "";
+    if(getLocalStorage("so-cart").length > 0){
       const cartCountContainer = document.querySelector("#cart-count-container");
       cartCountContainer.className = "count-container-format";
     }
