@@ -94,6 +94,11 @@ button {
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
+.breadcrumbs, .breadcrumb-individual, .breadLink {
+  margin-left: 15px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
 /* End utility classes */
 
 /* Cart icon styles */
