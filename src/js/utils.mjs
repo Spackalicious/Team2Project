@@ -79,6 +79,23 @@ function loadTemplate(path) {
   };
 }
 
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+
+  alert.addEventListener("click", function (e) {
+    if (e.target.tagName == "SPAN") {
+      main.removeChild(this);
+    }
+  });
+  const main = document.querySelector("main");
+  main.prepend(alert);
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
+
 export function breadcrumbs() {
   // Breadcrumbs to product list pages
   // hard coded each product count :/ 
@@ -132,4 +149,9 @@ export async function loadHeaderFooter() {
       cartCountContainer.className = "count-container-format";
     }
   })
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }

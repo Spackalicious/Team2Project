@@ -1,5 +1,5 @@
 import {findProductById} from "./externalServices.mjs";
-import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, loadHeaderFooter, alertMessage } from "./utils.mjs";
 
 let product = {};
 
@@ -30,7 +30,9 @@ export function addToCart() {
         setLocalStorage("cart-count", cartCount);
         document.querySelector("#cart-count").textContent = cartCount;
         document.querySelector("#cart-count-container").className = "count-container-format"
-}
+
+        alertMessage("Product Successfully Added");
+        }
 
 function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;

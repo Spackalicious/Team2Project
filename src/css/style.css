@@ -222,6 +222,20 @@ button {
   font-size: 1em;
 }
 
+.alert {
+  border: solid darkorange 1px;
+  display: flex;
+  flex-align: column;
+  background-color: var(--primary-color);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.alert span:hover {
+  cursor: pointer;
+}
+
 
 .product-detail {
   padding: 1em;
