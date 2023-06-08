@@ -76,6 +76,40 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+
+div.search-container {
+  width: 30%;
+  min-width: 190px;
+  padding: 14px;
+}
+
+div.search-container form{
+  display: flex;
+  border: 1px solid;
+  padding: 5px;
+  border-radius: 7px;  
+}
+
+div.search-container form input {
+  border: none;
+  flex-grow: 4;
+}
+
+div.search-container form input:focus {
+  outline: none;
+}
+
+div.search-container form button{
+  background-color: transparent;
+  color:#6a6a6a;
+  padding: 0px;
+}
+
+div.search-container form button:hover {
+  color: #000000;
+}
+
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
