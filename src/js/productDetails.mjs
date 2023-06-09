@@ -21,18 +21,16 @@ export default async function productDetails(productId){
 }
 
 export function addToCart() {
-        let cart = getLocalStorage("so-cart") || [];
-        cart.push(product);
-        setLocalStorage("so-cart", cart);
-        // Add total count
-        let cartCount = getLocalStorage("cart-count") || 0;
-        cartCount++;
-        setLocalStorage("cart-count", cartCount);
-        document.querySelector("#cart-count").textContent = cartCount;
-        document.querySelector("#cart-count-container").className = "count-container-format"
+    let cart = getLocalStorage("so-cart") || [];
+    cart.push(product);
+    setLocalStorage("so-cart", cart);
+    // Add display total in cart
+    let cartCount = getLocalStorage("so-cart").length;
+    document.querySelector("#cart-count").textContent = cartCount;
+    document.querySelector("#cart-count-container").className = "count-container-format"
 
-        alertMessage("Product Successfully Added");
-        }
+    alertMessage("Product Successfully Added");
+    }
 
 function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;
