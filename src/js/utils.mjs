@@ -96,12 +96,12 @@ export function alertMessage(message, scroll = true) {
   }
 }
 
-export function breadcrumbs() {
+export function breadcrumbs(category) {
   // Breadcrumbs to product list pages
   // hard coded each product count :/ 
-  const category = window.location.search;
-  const categoryTrimmed = category.slice(10);
-  const categoryCapped = categoryTrimmed[0].toUpperCase() + categoryTrimmed.substring(1);
+  // const category = window.location.search;
+  // const categoryTrimmed = category.slice(10);
+  const categoryCapped = category[0].toUpperCase() + category.substring(1);
   let itemCount = 0;
   if (categoryCapped == "Tents") {
     itemCount = 24;
@@ -141,10 +141,8 @@ export async function loadHeaderFooter() {
   // update cart count
   window.addEventListener("load", () => {
     const cartCountEl = document.querySelector("#cart-count");
-    // clear contents
-    cartCountEl.textContent = "";
-    cartCountEl.textContent = getLocalStorage("cart-count") || "";
-    if(getLocalStorage("cart-count")){
+    cartCountEl.textContent = getLocalStorage("so-cart").length || "";
+    if(getLocalStorage("so-cart").length > 0){
       const cartCountContainer = document.querySelector("#cart-count-container");
       cartCountContainer.className = "count-container-format";
     }
