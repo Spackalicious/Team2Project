@@ -3,10 +3,12 @@
   <a href="../index.html"> Sleep<span class="highlight">Outside</span></a>
 </div>
 <div class="search-container">
-  <form action="/action_page.php">
-    <input type="text" placeholder="Search.." name="search">
+  <form action="/product-list/index.html" method="GET">
+    <input type="hidden" name="category" value="search">
+    <input type="text" placeholder="Search for a product..." name="search" id="search-input">
     <button type="submit" class="fa fa-search"></button>
   </form>
+  <ul id="auto-results"></ul>
 </div>
 <div class="cart">
   <div id="cart-count-container"><span id="cart-count"></span></div>
