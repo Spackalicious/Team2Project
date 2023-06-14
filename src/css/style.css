@@ -330,6 +330,16 @@ button {
   width: 100%;
 }
 
+div#colors {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+div#colors img {
+  width: 60px;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
