@@ -83,11 +83,11 @@ div.search-container {
   padding: 14px;
 }
 
-div.search-container form{
+div.search-container form {
   display: flex;
   border: 1px solid;
   padding: 5px;
-  border-radius: 7px;  
+  border-radius: 7px;
 }
 
 div.search-container form input {
@@ -99,9 +99,9 @@ div.search-container form input:focus {
   outline: none;
 }
 
-div.search-container form button{
+div.search-container form button {
   background-color: transparent;
-  color:#6a6a6a;
+  color: #6a6a6a;
   padding: 0px;
 }
 
@@ -109,9 +109,9 @@ div.search-container form button:hover {
   color: #000000;
 }
 
-ul#auto-results{
-  position:absolute;
-  z-index:2;
+ul#auto-results {
+  position: absolute;
+  z-index: 2;
   padding-left: 0;
   background-color: #d0d0d0;
   margin-top: 0;
@@ -124,13 +124,11 @@ ul#auto-results li {
   font-size: var(--small-font);
   width: 100%;
   padding: 14px;
-  
 }
-ul#auto-results li:hover{
+ul#auto-results li:hover {
   background-color: var(--primary-color);
   cursor: pointer;
 }
-
 
 /* utility classes */
 .highlight {
@@ -150,13 +148,15 @@ button {
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
-.breadcrumbs, .breadcrumb-individual, .breadLink {
+.breadcrumbs,
+.breadcrumb-individual,
+.breadLink {
   margin-left: 15px;
   color: var(--primary-color);
   text-decoration: none;
 }
 
-.breadcrumb-individual:hover{
+.breadcrumb-individual:hover {
   filter: brightness(110%);
   text-decoration: underline;
   cursor: pointer;
@@ -260,7 +260,6 @@ button {
 #top-products-container {
   display: flex;
   justify-content: space-between;
-  
 }
 
 #top-products-container div#sorters {
@@ -268,13 +267,13 @@ button {
   flex-flow: wrap;
 }
 
-.sortLinks{
+.sortLinks {
   margin-left: 40px;
   text-decoration: none;
   color: #303030;
 }
 
-.sortLinks:hover{
+.sortLinks:hover {
   color: orange;
 }
 
@@ -318,7 +317,6 @@ button {
 .alert span:hover {
   cursor: pointer;
 }
-
 
 .product-detail {
   padding: 1em;
