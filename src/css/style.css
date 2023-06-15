@@ -76,6 +76,62 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+
+div.search-container {
+  width: 40%;
+  min-width: 190px;
+  padding: 14px;
+}
+
+div.search-container form{
+  display: flex;
+  border: 1px solid;
+  padding: 5px;
+  border-radius: 7px;  
+}
+
+div.search-container form input {
+  border: none;
+  flex-grow: 4;
+}
+
+div.search-container form input:focus {
+  outline: none;
+}
+
+div.search-container form button{
+  background-color: transparent;
+  color:#6a6a6a;
+  padding: 0px;
+}
+
+div.search-container form button:hover {
+  color: #000000;
+}
+
+ul#auto-results{
+  position:absolute;
+  z-index:2;
+  padding-left: 0;
+  background-color: #d0d0d0;
+  margin-top: 0;
+  border: 1px solid var(--primary-color);
+  border-top: none;
+  margin-left: 5px;
+}
+ul#auto-results li {
+  list-style: none;
+  font-size: var(--small-font);
+  width: 100%;
+  padding: 14px;
+  
+}
+ul#auto-results li:hover{
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
@@ -98,6 +154,12 @@ button {
   margin-left: 15px;
   color: var(--primary-color);
   text-decoration: none;
+}
+
+.breadcrumb-individual:hover{
+  filter: brightness(110%);
+  text-decoration: underline;
+  cursor: pointer;
 }
 /* End utility classes */
 
@@ -247,7 +309,6 @@ button {
 .alert {
   border: solid darkorange 1px;
   display: flex;
-  flex-align: column;
   background-color: var(--primary-color);
   justify-content: space-between;
   align-items: center;
@@ -267,6 +328,16 @@ button {
 
 .product-detail img {
   width: 100%;
+}
+
+div#colors {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+div#colors img {
+  width: 60px;
 }
 
 /* Start cart list card styles */

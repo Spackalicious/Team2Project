@@ -1,10 +1,16 @@
-import { getProductsByCategory } from "./externalServices.mjs";
+import { getProductsByCategory, getProductsBySearch } from "./externalServices.mjs";
 import {renderList} from "./utils.mjs";
+
+let searched = null;
 
 // productList.mjs
 function productCardTemplate(product) {
+    let searchParam = "";
+    if(searched == true){
+      searchParam = "&searched=true";
+    }
     return `<li class="product-card">
-    <a href="/product_pages/index.html?product=${product.Id}">
+    <a href="/product_pages/index.html?product=${product.Id}${searchParam}">
     <img
       src="${product.Images.PrimaryMedium}"
       alt="Image of ${product.Name}"
@@ -15,12 +21,18 @@ function productCardTemplate(product) {
   </li>`;
 }             
 
-export default async function productList(selector, category, sort) {
+export default async function productList(selector, category, sort, search) {
     
     // get the element we will insert the list into from the selector
     const element = document.querySelector(selector);
     // get the list of products 
-    const products = await getProductsByCategory(category);
+    let products = [];
+    if(search != null){
+      searched = true;
+      products = await getProductsBySearch(search);
+    } else{
+      products = await getProductsByCategory(category);
+    }
     // render out the product list to the element
     const title = document.querySelector(".title");
     title.textContent = category[0].toUpperCase() + category.substring(1);
@@ -46,13 +58,15 @@ export default async function productList(selector, category, sort) {
       default:
         break;
     }
+    let searchParam = "";
+    if(search != null){
+      searchParam = `&search=${search}`;
+    }
 
     const sortByNameEl = document.querySelector("#nameSort");
-    sortByNameEl.setAttribute("href", `/product-list/index.html?category=${category}&sort=name`);
+    sortByNameEl.setAttribute("href", `/product-list/index.html?category=${category}` + searchParam + `&sort=name`);
     const sortByPriceEl = document.querySelector("#priceSort");
-    sortByPriceEl.setAttribute("href", `/product-list/index.html?category=${category}&sort=price`);
-    
-
+    sortByPriceEl.setAttribute("href", `/product-list/index.html?category=${category}` + searchParam + `&sort=price`);
     
     //element.innerHTML = products.name;
     //const htmlItems = products.map((item) => productCardTemplate(item));

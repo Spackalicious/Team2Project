@@ -37,6 +37,19 @@ function renderProductDetails(){
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
     document.querySelector("#productImage").src = product.Images.PrimaryLarge;
     document.querySelector("#productImage").alt = product.Name;
+    const colors = document.querySelector("#colors");
+    const productColors = product.Colors;
+    productColors.forEach(color => {
+        const newColor = document.createElement("img");
+        newColor.src = color.ColorChipImageSrc;
+        newColor.alt = color.ColorName;
+        newColor.addEventListener("click", () => {
+            document.querySelector("#productColorName").innerText = color.ColorName;
+            document.querySelector("#productImage").src = color.ColorPreviewImageSrc;
+            document.querySelector("#productImage").alt = color.ColorName;
+        })
+        colors.append(newColor);
+    });
     document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;

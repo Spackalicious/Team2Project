@@ -24,6 +24,23 @@ export async function findProductById(id) {
   return data.Result;
 }
 
+export async function getAllProducts(){
+  const categories = ["tents", "hammocks", "sleeping-bags", "backpacks"];
+  const promises = categories.map(category => getProductsByCategory(category));
+  const results = await Promise.all(promises);
+  const allProducts = results.reduce((accumulator, current) => accumulator.concat(current), []);
+  return allProducts;  
+}
+
+export async function getProductsBySearch(search){
+  var filteredProducts = [];
+  if(search != null){
+    const allProducts = await getAllProducts();
+    filteredProducts = allProducts.filter(product => product.Name.toLowerCase().includes(search.toLowerCase()));
+  }
+  return filteredProducts;
+}
+
 export async function checkout(payload) {
   const options = {
     method: "POST",

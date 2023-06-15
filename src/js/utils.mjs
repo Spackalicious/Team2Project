@@ -1,5 +1,5 @@
 // import { getProductsByCategory, findProductById } from "./externalServices.mjs";
-import { findProductById } from "./externalServices.mjs";
+import { findProductById, getProductsByCategory, getProductsBySearch } from "./externalServices.mjs";
 // import productList from "./productList.mjs";
 
 // wrapper for querySelector...returns matching element
@@ -96,36 +96,41 @@ export function alertMessage(message, scroll = true) {
   }
 }
 
-export function breadcrumbs(category) {
+export async function breadcrumbs(category, search = null) {
   // Breadcrumbs to product list pages
   // hard coded each product count :/ 
   // const category = window.location.search;
   // const categoryTrimmed = category.slice(10);
   const categoryCapped = category[0].toUpperCase() + category.substring(1);
-  let itemCount = 0;
-  if (categoryCapped == "Tents") {
-    itemCount = 24;
-  } else if (categoryCapped == "Sleeping-bags") {
-    itemCount = 15;
-  } else if (categoryCapped == "Backpacks") {
-    itemCount = 15;
-  } else if (categoryCapped == "Hammocks") {
-    itemCount = 13;
+  let products = [];
+  if(search != null){
+    products = await getProductsBySearch(search);
+  } else {
+    products = await getProductsByCategory(category);
   }
-    
+  const itemCount = products.length;
   const breadcrumbText = categoryCapped + " >> (" + itemCount + " items)";
   document.querySelector(".breadcrumbs").innerHTML = breadcrumbText;
 }
 
-export async function moreBreadcrumbs() {
+export async function moreBreadcrumbs(searched) {
   // Shows product category with link back to 
   //  product category list on each product page
   const category = window.location.search;
   const categoryTrimmed = category.slice(9);
   const thing = await findProductById(categoryTrimmed);
-  const breadText = thing.Category;
+  let breadText = "";
+  if(searched){
+    breadText = "Search Results";
+  } else{
+    breadText = thing.Category;
+  }
   const categoryCapped = breadText[0].toUpperCase() + breadText.substring(1);
-  document.querySelector(".breadcrumb-individual").innerHTML = `<a class="breadLink" href="/product-list/index.html?category=${breadText}">${categoryCapped}</a>`;
+  const breadcrumb = document.querySelector(".breadcrumb-individual")
+  breadcrumb.innerHTML = `<p class="breadLink">${categoryCapped}</p>`;
+  breadcrumb.addEventListener("click", () => {
+    window.history.back();
+  })
 }
 
 export async function loadHeaderFooter() {
@@ -140,13 +145,44 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footerTemplateFn, footerEl);
   // update cart count
   window.addEventListener("load", () => {
+    // cart count
     const cartCountEl = document.querySelector("#cart-count");
     cartCountEl.textContent = getLocalStorage("so-cart").length || "";
     if(getLocalStorage("so-cart").length > 0){
       const cartCountContainer = document.querySelector("#cart-count-container");
       cartCountContainer.className = "count-container-format";
     }
+    // search bar
+    const search = document.querySelector("#search-input");
+    search.addEventListener("keyup", searchProducts);
+    
   })
+}
+
+async function searchProducts(){
+  // get the form 
+  const searchForm = document.querySelector(".search-container form");
+  // remove search results
+  const displayResults = document.querySelector("#auto-results");
+  displayResults.innerHTML = "";
+  // get search element and value of current search
+  const search = document.querySelector("#search-input");
+  const searchValue = search.value;
+  // filter product names compared to search value if the search value is not null
+  if(searchValue != ""){
+    const filteredProducts = await getProductsBySearch(searchValue);
+    for (let index = 0; index < 5; index++) {
+      const listItem = document.createElement("li");
+      listItem.textContent = filteredProducts[index].Name;
+      listItem.addEventListener("click", () => {
+        search.value = filteredProducts[index].Name;
+        displayResults.innerHTML = "";
+        searchForm.submit();
+      })
+      displayResults.appendChild(listItem);
+  }
+  }
+
 }
 
 export function removeAllAlerts() {
