@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Checkout</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/checkout.js" type="module"></script>
   </head>
@@ -31,17 +34,31 @@
               <label for="state">State</label>
               <input name="state" required />
               <label for="zip">Zip</label>
-              <input name="zip" id="zip" type="number" min=10000 max=99999 required />
+              <input
+                name="zip"
+                id="zip"
+                type="number"
+                min="10000"
+                max="99999"
+                required
+              />
             </div>
           </fieldset>
           <fieldset>
             <legend>Payment</legend>
             <label for="cardNumber">Card number</label>
-            <input name="cardNumber" type="number" min=1000000000000000 max=9999999999999999 required />
+            <input
+              name="cardNumber"
+              type="number"
+              min="1000000000000000"
+              max="9999999999999999"
+              required
+            />
             <label for="expiration">Expiration</label>
-            <input name="expiration" pattern=^(0[1-9]|1[0-2])\/?([0-9]{2})$ required />
+            <input name="expiration" pattern=^(0[1-9]|1[0-2])\/?([0-9]{2})$
+            required />
             <label for="code">Security Code</label>
-            <input name="code" type="number" min=100 max=999 required />
+            <input name="code" type="number" min="100" max="999" required />
           </fieldset>
           <fieldset class="checkout-summary">
             <legend>Order Summary</legend>

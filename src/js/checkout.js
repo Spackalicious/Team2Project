@@ -25,6 +25,5 @@ document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   var myForm = document.forms[0];
   var chk_status = myForm.checkValidity();
   myForm.reportValidity();
-  if(chk_status)
-  checkoutProcess.checkout(document.forms["checkout"]);
+  if (chk_status) checkoutProcess.checkout(document.forms["checkout"]);
 });
