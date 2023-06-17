@@ -11,6 +11,9 @@ document.querySelector("#login-submit").addEventListener("click", () => {
     const email = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
 
-    login({email, password}, redirect);
-
+    if(redirect !== null) {
+        login({email, password}, redirect);
+    } else {
+        login({email, password});
+    }
 });
