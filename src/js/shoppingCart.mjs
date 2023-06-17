@@ -59,11 +59,13 @@ export function cartTotal() {
     }
   
     if (itemsInCart != null) {
-      const itemPrices = itemsInCart.map((item) => item.FinalPrice);
-      itemPrices.forEach(addPrices);
-      cartItemsTotal.append(` $${roundedCartTotalCost}`);
-      // cartItemsTotal.style.display = "inline";
-      cartItemsTotal.style.display = "flex";
-      cartItemsTotal.style.flex = "1";
+      if (itemsInCart.length > 0) {
+        const itemPrices = itemsInCart.map((item) => item.FinalPrice);
+        itemPrices.forEach(addPrices);
+        cartItemsTotal.append(` $${roundedCartTotalCost}`);
+        // cartItemsTotal.style.display = "inline";
+        cartItemsTotal.style.display = "flex";
+        cartItemsTotal.style.flex = "1";
+      }
     }
   }  

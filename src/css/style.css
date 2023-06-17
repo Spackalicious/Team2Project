@@ -402,6 +402,10 @@ div#colors img {
   /* border: solid teal; */
 }
 
+.checkout-button-link {
+  text-decoration: 5px;
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
