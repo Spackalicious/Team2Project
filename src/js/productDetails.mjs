@@ -35,7 +35,23 @@ export function addToCart() {
 function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+
+
+    if (window.innerWidth < 300) {
+        document.querySelector("#productImage").src = product.Images.PrimarySmall;
+        // console.log("screen.width is " + window.innerWidth + "px");
+    } else if (window.innerWidth < 600) {
+        document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+        // console.log("screen.width is " + window.innerWidth + "px");
+    } else if (window.innerWidth < 900) {
+        document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+        // console.log("screen.width is " + window.innerWidth + "px");
+    } else if (window.innerWidth > 900) {
+        document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
+        // console.log("screen.width is " + window.innerWidth + "px");
+    }
+
+
     document.querySelector("#productImage").alt = product.Name;
     const colors = document.querySelector("#colors");
     const productColors = product.Colors;
