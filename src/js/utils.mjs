@@ -147,10 +147,13 @@ export async function loadHeaderFooter() {
   window.addEventListener("load", () => {
     // cart count
     const cartCountEl = document.querySelector("#cart-count");
-    cartCountEl.textContent = getLocalStorage("so-cart").length || "";
-    if(getLocalStorage("so-cart").length > 0){
-      const cartCountContainer = document.querySelector("#cart-count-container");
-      cartCountContainer.className = "count-container-format";
+    if(getLocalStorage("so-cart")){
+      cartCountEl.textContent = getLocalStorage("so-cart").length
+      if(getLocalStorage("so-cart").length > 0){
+        const cartCountContainer = document.querySelector("#cart-count-container");
+        cartCountContainer.className = "count-container-format";
+    }
+    
     }
     // search bar
     const search = document.querySelector("#search-input");
