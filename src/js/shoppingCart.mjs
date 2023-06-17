@@ -58,7 +58,8 @@ export function cartTotal() {
       roundedCartTotalCost = cartTotalCost.toFixed(2);
     }
   
-    if (itemsInCart != null) {
+    // if (itemsInCart != null) {
+    if (itemsInCart.length > 0) {
       const itemPrices = itemsInCart.map((item) => item.FinalPrice);
       itemPrices.forEach(addPrices);
       cartItemsTotal.append(` $${roundedCartTotalCost}`);
