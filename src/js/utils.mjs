@@ -148,8 +148,8 @@ export async function loadHeaderFooter() {
     // cart count
     const cartCountEl = document.querySelector("#cart-count");
     if(getLocalStorage("so-cart")){
-      cartCountEl.textContent = getLocalStorage("so-cart").length
       if(getLocalStorage("so-cart").length > 0){
+        cartCountEl.textContent = getLocalStorage("so-cart").length;
         const cartCountContainer = document.querySelector("#cart-count-container");
         cartCountContainer.className = "count-container-format";
     }
