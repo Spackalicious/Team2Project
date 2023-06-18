@@ -325,7 +325,30 @@ button {
 }
 
 .product-detail img {
-  width: 100%;
+  width: 100%;  
+}
+
+#productImage {
+  display: flex;
+  padding: 10px 0;
+  margin: 10px auto;
+  @media (min-width: 10px) {
+    width: 90%;
+  }
+  @media (min-width: 200px) {
+    width: 50%;
+    /* text-align: center; */
+  }
+  @media (min-width: 400px) {
+    width: 60%;
+    padding: 30px 0;
+  }
+  @media (min-width: 800px) {
+    width: 80%;
+  }
+  @media (min-width: 1000px) {
+    width: 100%;
+  }
 }
 
 div#colors {
