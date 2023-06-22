@@ -66,6 +66,21 @@ export async function loginRequest(creds){
   return response.accessToken;
 }
 
+export async function createUser(userCreds){
+  const userOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // "Authorization": `Bearer ${getLocalStorage("so-token")}`
+      "Authorization": `Bearer ${getLocalStorage("so-token")}`
+    },
+    body: JSON.stringify(userCreds)
+  };
+  localStorage.setItem("newUser", userCreds.email);
+  return await fetch(baseURL + "users", userOptions)
+  .then(convertToJson);  
+}
+
 export async function getOrders(){
   const options = {
     method: "GET",

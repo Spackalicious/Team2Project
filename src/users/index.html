@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sleep Outside | New User</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="../js/users.js" type="module"></script>
+  </head>
+
+  <body>
+    <header id="main-header" class="divider"></header>
+      <main>
+        <!-- <div class="user-form-div"> -->
+        <form class="user-form-div">
+          <fieldset class="user-form">
+            <legend>Create User</legend>
+            <label for="fullName">
+                Full Name 
+                <input type="text" id="fullName" name="fullName" required>
+            </label>                              
+            <label for="addy">
+                Mailing Address  
+                <input type="text" id="addy" name="addy" required>
+            </label>                
+            <label for="userEmail">
+                Email 
+                <input type="email" id="userEmail" name="email" required>
+            </label>                
+            <label for="userPassword">
+                Password 
+                <input type="password" id="userPassword" name="password" required>
+            </label>                
+            <button type="submit" id="userSubmit">Create User</button>
+          </fieldset>
+        <!-- </div> -->
+        </form>
+      </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>

@@ -21,7 +21,10 @@ function signUp() {
 
 function modalBanner() {
   var modal = document.getElementById("myModal");
-  window.addEventListener("load", openModal);
+
+  if (!localStorage.getItem("newUser")) {
+    window.addEventListener("load", openModal);
+  }  
 
   function openModal() {
     modal.style.display = "block";	
