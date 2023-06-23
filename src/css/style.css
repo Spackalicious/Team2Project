@@ -81,6 +81,8 @@ div.search-container {
   width: 40%;
   min-width: 190px;
   padding: 14px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 div.search-container form {
@@ -129,6 +131,22 @@ ul#auto-results li:hover {
   background-color: var(--primary-color);
   cursor: pointer;
 }
+
+div#wishlist-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+div#wishlist-container a {
+  text-decoration: none;
+  color: black;
+}
+
+div#wishlist-container a:hover {
+  color: gray;
+}
+  
 
 /* utility classes */
 .highlight {
@@ -349,6 +367,12 @@ button {
   @media (min-width: 1000px) {
     width: 100%;
   }
+}
+
+div.product-detail__add button#addToWishList {
+  font-size: smaller;
+  margin-top: 5px;
+  background-color: rgb(55, 55, 226);
 }
 
 div#colors {

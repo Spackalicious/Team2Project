@@ -103,12 +103,18 @@ export async function breadcrumbs(category, search = null) {
   // const categoryTrimmed = category.slice(10);
   const categoryCapped = category[0].toUpperCase() + category.substring(1);
   let products = [];
+  let itemCount;
   if(search != null){
-    products = await getProductsBySearch(search);
+    if(search == ""){
+      itemCount = 0;
+    } else {
+      products = await getProductsBySearch(search);
+      itemCount = products.length;
+    }
   } else {
     products = await getProductsByCategory(category);
+    itemCount = products.length;
   }
-  const itemCount = products.length;
   const breadcrumbText = categoryCapped + " >> (" + itemCount + " items)";
   document.querySelector(".breadcrumbs").innerHTML = breadcrumbText;
 }
