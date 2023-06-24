@@ -428,7 +428,11 @@ button {
 div#colorSelection, div#imgSelection {
   border: 2px solid var(--primary-color);
   padding: 0 0 0 20px;
-  margin-top: 10px;
+  margin-top: 10px;  
+}
+
+div#imgSelection {
+  display: none;
 }
 
 div#colors img {
