@@ -77,6 +77,82 @@ header {
   margin-top: -1.7em;
 }
 
+/* MODAL */
+.modal {
+  display: none; 
+  position: fixed; 
+  left: 0;
+  top: 0;
+  z-index: 1; 
+  padding: 100px 0 0 0;   
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.6); 
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  margin: auto;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.close {
+  color: white;
+  float: right;
+  font-size: 48px;
+  padding: 5px;
+}
+
+.close:hover, .close:focus {
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.modal-body {
+  padding: 0px 20px;
+}
+
+.modal-body>p>a:link, .modal-body>p>a:visited {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.modal-body>p>a:hover {
+  color: var(--secondary-color);
+}
+.modal-body>p>a:active {
+  color: var(--tertiary-color);
+}
+
+.modal-footer {
+  padding: 5px;
+  background-color: var(--secondary-color);
+}
+/* end BANNER */
+
 div.search-container {
   width: 40%;
   min-width: 190px;
@@ -204,7 +280,6 @@ button {
   left: 15px;
   bottom: 35px;
 }
-
 /* End cart icon styles */
 
 .mission {
@@ -294,7 +369,6 @@ button {
 .sortLinks:hover {
   color: orange;
 }
-
 /* End product list card */
 
 /* checkout styles */
@@ -439,18 +513,45 @@ div#colors img {
   display: none;
   max-width: 650px;
   justify-content: flex-end;
-  /* border: solid red; */
 }
 
 .cart-remove-button {
   grid-column: 3;
   margin: 0 0 5px 0;
   height: 50px;
-  /* border: solid teal; */
 }
 
 .checkout-button-link {
   text-decoration: 5px;
+}
+
+/* LOGIN */
+.login-form, .user-form {
+  width: 60%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 40px 100px;
+  border-radius: 20px;
+}
+
+.login-form label, .user-form label {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+.login-form input, .user-form input {
+  width: 100%;
+  height: 30px;
+}
+
+.login-form legend, .user-form legend {
+  margin: 0 0 0 -60px;
+}
+
+#login-submit, #user-submit {
+  margin: 20px 0 0 0;
 }
 
 footer {
