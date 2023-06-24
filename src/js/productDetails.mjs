@@ -15,6 +15,7 @@ export default async function productDetails(productId){
     } else{
         renderProductDetails();
         document.getElementById("addToCart").addEventListener("click", () => addToCart());
+        document.getElementById("addToWishList").addEventListener("click", () => addToWishlist());
     }
 
 
@@ -29,8 +30,15 @@ export function addToCart() {
     document.querySelector("#cart-count").textContent = cartCount;
     document.querySelector("#cart-count-container").className = "count-container-format"
 
-    alertMessage("Product Successfully Added");
-    }
+    alertMessage("Product Successfully Added to your Cart");
+}
+
+export function addToWishlist(){
+    let wishlist = getLocalStorage("so-wish") || [];
+    wishlist.push(product);
+    setLocalStorage("so-wish", wishlist);
+    alertMessage("Product Successfully added to your Wishlist")
+}
 
 function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;
@@ -70,6 +78,8 @@ function renderProductDetails(){
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = product.Id;
+    document.querySelector("#addToWishList").dataset.wish = product.Id;
+
 }
 
 loadHeaderFooter();
