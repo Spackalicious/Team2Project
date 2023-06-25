@@ -15,6 +15,7 @@ export default async function productDetails(productId){
     } else{
         renderProductDetails();
         document.getElementById("addToCart").addEventListener("click", () => addToCart());
+        document.getElementById("addToWishList").addEventListener("click", () => addToWishlist());
     }
 }
 
@@ -28,6 +29,13 @@ export function addToCart() {
     document.querySelector("#cart-count-container").className = "count-container-format"
 
     alertMessage("Product Successfully Added");
+}
+
+export function addToWishlist(){
+    let wishlist = getLocalStorage("so-wish") || [];
+    wishlist.push(product);
+    setLocalStorage("so-wish", wishlist);
+    alertMessage("Product Successfully added to your Wishlist")
 }
 
 export function showImageCarousel() {
@@ -66,6 +74,7 @@ export function showImageCarousel() {
 }
 
 function renderProductDetails(){
+    document.querySelector("#titleName").innerText = "Sleep Outside | " + product.Name;
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
 
@@ -102,7 +111,8 @@ function renderProductDetails(){
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
     document.querySelector("#productFinalPrice").innerText = "$" + product.FinalPrice;    
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
-    document.querySelector("#addToCart").dataset.id = product.Id;        
+    document.querySelector("#addToCart").dataset.id = product.Id;       
+    document.querySelector("#addToWishList").dataset.wish = product.Id; 
 };
 
 loadHeaderFooter();

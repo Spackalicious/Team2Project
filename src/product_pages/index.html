@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Cedar Ridge Rimrock 2-person tent</title>
+    <title id="titleName"></title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://kit.fontawesome.com/e874bb0479.js" crossorigin="anonymous"></script>
     <script src="../js/product.js" type="module"></script>
   </head>
 
@@ -20,6 +21,7 @@
         <h3 id="productName"></h3>
         <h2 class="divider" id="productNameWithoutBrand"></h2>
         <!-- <img id="productImage" class="divider" src="" alt="" /> -->
+        <!-- <div id="colors"></div> -->
         <img id="productImage" src="" alt="" />
 
         <div id="imgSelection">
@@ -30,15 +32,16 @@
         <div id="colorSelection">
           <p>Selected Color: <span class="product__color" id="productColorName"></span></p>
           <div id="colors"></div>        
-          <!-- <p class="product__color" id="productColorName"></p> -->
+          
         </div>
         
         <p class="product-card__price" id="productFinalPrice"></p>
-        
+        <!-- <p class="product__color" id="productColorName"></p> -->
         <p class="product__description" id="productDescriptionHtmlSimple"></p>
 
         <div class="product-detail__add">
           <button id="addToCart" data-id="">Add to Cart</button>
+          <button id="addToWishList" data-wish="">Add to Wishlist</button>
         </div>
       </section>
     </main>
