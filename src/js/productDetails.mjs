@@ -28,7 +28,7 @@ export function addToCart() {
     document.querySelector("#cart-count").textContent = cartCount;
     document.querySelector("#cart-count-container").className = "count-container-format"
 
-    alertMessage("Product Successfully Added");
+    alertMessage("Product Successfully Added to your Cart");
 }
 
 export function addToWishlist(){
@@ -111,8 +111,8 @@ function renderProductDetails(){
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
     document.querySelector("#productFinalPrice").innerText = "$" + product.FinalPrice;    
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
-    document.querySelector("#addToCart").dataset.id = product.Id;       
-    document.querySelector("#addToWishList").dataset.wish = product.Id; 
-};
+    document.querySelector("#addToCart").dataset.id = product.Id;
+    document.querySelector("#addToWishList").dataset.wish = product.Id;
+}
 
 loadHeaderFooter();
