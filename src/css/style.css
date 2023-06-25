@@ -449,14 +449,39 @@ div.product-detail__add button#addToWishList {
   background-color: rgb(55, 55, 226);
 }
 
-div#colors {
+/* div#colors {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+} */
+
+/* js--product-image-carousel */
+div#colorSelection, div#imgSelection {
+  border: 2px solid var(--primary-color);
+  padding: 0 0 0 20px;
+  margin-top: 10px;  
+}
+
+div#imgSelection {
+  display: none;
 }
 
 div#colors img {
   width: 60px;
+  margin: 0 5px 20px 0;
+  border: solid var(--primary-color) 1px;
+  cursor: pointer;
+}
+div#colors img:active, div#extraImages img:active {
+  border: solid var(--secondary-color) 1px;
+}
+
+div#extraImages img {
+  width: 15%;
+  margin: 0 5px 20px 0;
+  border: solid var(--primary-color) 1px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 /* Start cart list card styles */
@@ -571,4 +596,5 @@ footer {
   background-color: rgb(219, 3, 3);
   font-size: smaller;
   margin-top: 10px;
+
 }

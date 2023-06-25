@@ -17,8 +17,6 @@ export default async function productDetails(productId){
         document.getElementById("addToCart").addEventListener("click", () => addToCart());
         document.getElementById("addToWishList").addEventListener("click", () => addToWishlist());
     }
-
-
 }
 
 export function addToCart() {
@@ -40,10 +38,45 @@ export function addToWishlist(){
     alertMessage("Product Successfully added to your Wishlist")
 }
 
+export function showImageCarousel() {
+    const productImages = product.Images.ExtraImages;
+    if (productImages != null) {
+        document.querySelector("#imgSelection").style.display = "block";
+
+        const extraImages = document.querySelector("#extraImages");
+        const origThumbnail = document.createElement("img");
+        origThumbnail.src = product.Images.PrimarySmall;
+        origThumbnail.addEventListener("click", () => {
+            if (window.innerWidth < 300) {
+                document.querySelector("#productImage").src = product.Images.PrimarySmall;
+            } else if (window.innerWidth < 600) {
+                document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+            } else if (window.innerWidth < 900) {
+                document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+            } else if (window.innerWidth > 900) {
+                document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
+            }
+        })
+        extraImages.append(origThumbnail);
+
+        productImages.forEach(extraImage => {
+            const newImage = document.createElement("img");
+            newImage.src = extraImage.Src;
+            newImage.alt = extraImage.Title;
+            newImage.addEventListener("click", () => {
+
+                document.querySelector("#productImage").src = newImage.src;
+                document.querySelector("#productImage").alt = newImage.alt;
+            })
+            extraImages.append(newImage);
+        });
+    };
+}
+
 function renderProductDetails(){
+    document.querySelector("#titleName").innerText = "Sleep Outside | " + product.Name;
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-
 
     if (window.innerWidth < 300) {
         document.querySelector("#productImage").src = product.Images.PrimarySmall;
@@ -58,9 +91,10 @@ function renderProductDetails(){
         document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
         // console.log("screen.width is " + window.innerWidth + "px");
     }
+    document.querySelector("#productImage").alt = product.Name;    
 
+    showImageCarousel();    
 
-    document.querySelector("#productImage").alt = product.Name;
     const colors = document.querySelector("#colors");
     const productColors = product.Colors;
     productColors.forEach(color => {
@@ -74,12 +108,11 @@ function renderProductDetails(){
         })
         colors.append(newColor);
     });
-    document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+    document.querySelector("#productFinalPrice").innerText = "$" + product.FinalPrice;    
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = product.Id;
     document.querySelector("#addToWishList").dataset.wish = product.Id;
-
 }
 
 loadHeaderFooter();
